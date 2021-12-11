@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/calendarCellClick"
+    android:layout_width="35dp"
+    android:layout_height="35dp"
+    android:layout_margin="12dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_calender_cell"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="7dp"
+        android:background="@drawable/cell_bg"
+        android:text="7"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+</LinearLayout>
