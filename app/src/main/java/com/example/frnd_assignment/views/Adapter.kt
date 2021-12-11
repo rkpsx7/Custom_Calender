@@ -17,7 +17,8 @@ class TaskListAdapter(private val taskList: ArrayList<TaskDetail>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.setData(taskList[position])
+        if (taskList.size > 0)
+            holder.setData(taskList[position])
     }
 
     override fun getItemCount(): Int {
@@ -28,9 +29,9 @@ class TaskListAdapter(private val taskList: ArrayList<TaskDetail>) :
 class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
     fun setData(task: TaskDetail) {
-        val date = task.date
+        val date = task.date.split("-")
         view.apply {
-            tv_date_day_icon.text = "${date[0].toString() + date[1].toString()}"
+            tv_date_day_icon.text = "${date[0]}"
             tv_task_title.text = task.taskTitle
             tv_task_desc.text = task.taskDesc
             tv_task_date_full.text = task.date

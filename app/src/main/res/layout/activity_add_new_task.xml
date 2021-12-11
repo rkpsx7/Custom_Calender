@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".views.AddNewTaskActivity">
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/ic_add_btn" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:gravity="center"
+        android:text="@string/add_new_task"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/et_new_task_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/edittext_background"
+        android:gravity="start"
+        android:hint="@string/title"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/et_new_task_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/edittext_background"
+        android:gravity="start"
+        android:hint="@string/description"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <EditText
+        android:id="@+id/et_new_task_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/edittext_background"
+        android:gravity="start"
+        android:hint="@string/date"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_task"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/add_to_list_btn_background"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="italic" />
+
+
+</LinearLayout>

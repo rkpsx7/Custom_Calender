@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:padding="12dp"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textSize="18sp" />
 
             <ImageButton

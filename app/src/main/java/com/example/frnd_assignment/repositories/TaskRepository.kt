@@ -9,6 +9,7 @@ import com.example.frnd_assignment.roomDB.TaskDao
 import com.example.frnd_assignment.utils.Constants.userId
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,7 +19,7 @@ class TaskRepository @Inject constructor(
     private val dao: TaskDao
 ) {
     fun getTasksFromServer() {
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(IO).launch {
             val userID = hashMapOf<String,Int>()
             userID["user_id"] = userId
             val response = apiService.getTasksFromServer(userID).tasks
@@ -33,8 +34,13 @@ class TaskRepository @Inject constructor(
         }
     }
 
-    suspend fun storeTaskOnServer(taskObj: StoreTaskRequest): StatusResponse {
-        return apiService.storeTaskOnServer(taskObj)
+    fun storeTask(taskObj: TaskDetail) {
+        CoroutineScope(IO).launch {
+            dao.insertTask(taskObj)
+            val reqObj = StoreTaskRequest(taskObj, userId)
+            apiService.storeTaskOnServer(reqObj)
+        }
+
     }
 
     suspend fun deleteTaskFromServer(deleteReq: HashMap<String, Int>): StatusResponse {
@@ -46,6 +52,7 @@ class TaskRepository @Inject constructor(
     }
 
     private fun insertTaskToDB(taskObj: TaskDetail) {
+        dao.deleteAll()
         dao.insertTask(taskObj)
     }
 

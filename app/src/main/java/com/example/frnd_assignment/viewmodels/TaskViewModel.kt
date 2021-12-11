@@ -20,10 +20,8 @@ class TaskViewModel @Inject constructor(private val repo: TaskRepository) : View
         return repo.getTasksFromDB()
     }
 
-    suspend fun storeTaskOnServer(
-        taskObj: StoreTaskRequest
-    ): StatusResponse {
-        return repo.storeTaskOnServer(taskObj)
+    fun storeTask(taskObj: TaskDetail) {
+        repo.storeTask(taskObj)
     }
 
 

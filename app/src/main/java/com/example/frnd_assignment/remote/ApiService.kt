@@ -12,7 +12,7 @@ interface ApiService {
     suspend fun getTasksFromServer(@Body user_id: HashMap<String, Int>): TaskResponse
 
     @POST("/api/storeCalendarTask")
-    suspend fun storeTaskOnServer(@Body taskObj: StoreTaskRequest): StatusResponse
+    suspend fun storeTaskOnServer(@Body taskObj: StoreTaskRequest)
 
     @POST("/api/deleteCalendarTask")
     suspend fun deleteTaskFromServer(@Body deleteReq: HashMap<String, Int>): StatusResponse

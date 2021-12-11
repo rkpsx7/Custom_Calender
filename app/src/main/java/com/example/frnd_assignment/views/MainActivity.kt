@@ -3,7 +3,6 @@ package com.example.frnd_assignment.views
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -21,6 +20,7 @@ class MainActivity : AppCompatActivity(), OnCalendarCellListener {
 
     private val viewModel: TaskViewModel by viewModels()
     private lateinit var selectedDate: LocalDate
+    private var dateForAddActivity = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +30,14 @@ class MainActivity : AppCompatActivity(), OnCalendarCellListener {
         initDate()
         setButtonActions()
         inflateMonthView()
-    }
 
+    }
 
     private fun initDate() {
         selectedDate = LocalDate.now()
+        dateForAddActivity =
+            "${selectedDate.dayOfMonth}-${selectedDate.month.value}-${selectedDate.year}"
+        tv_selected_date_show.text = "Selected Date: $dateForAddActivity"
     }
 
     private fun inflateMonthView() {
@@ -96,6 +99,12 @@ class MainActivity : AppCompatActivity(), OnCalendarCellListener {
             inflateMonthView()
         }
 
+        btn_add_new_task.setOnClickListener {
+            val intent = Intent(this, AddNewTaskActivity::class.java)
+            intent.putExtra("date", dateForAddActivity)
+            startActivity(intent)
+        }
+
         tv_date_header.setOnClickListener {
 
         }
@@ -106,7 +115,10 @@ class MainActivity : AppCompatActivity(), OnCalendarCellListener {
     }
 
     override fun onCellClick(position: Int, day: String, month: String, year: String) {
-        tv_selected_date_show.text = "Selected Date: ${day}-${month}-${year}"
+        if (day.isNotEmpty()) {
+            dateForAddActivity = "${day}-${month}-${year}"
+            tv_selected_date_show.text = "Selected Date: $dateForAddActivity"
+        }
     }
 
 
