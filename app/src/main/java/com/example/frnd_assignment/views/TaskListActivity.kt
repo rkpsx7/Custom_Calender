@@ -2,21 +2,25 @@ package com.example.frnd_assignment.views
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.frnd_assignment.clickListeners.OnTaskItemClickListener
 import com.example.frnd_assignment.R
-import com.example.frnd_assignment.models.responses.TaskDetail
+import com.example.frnd_assignment.models.TaskDetail
 import com.example.frnd_assignment.viewmodels.TaskViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_task_list.*
+import kotlinx.android.synthetic.main.alt_daig_delete.view.*
 
 @AndroidEntryPoint
-class TaskListActivity : AppCompatActivity() {
+class TaskListActivity : AppCompatActivity(), OnTaskItemClickListener {
 
     private val viewModel: TaskViewModel by viewModels()
     private var taskList = ArrayList<TaskDetail>()
-    private var taskAdapter = TaskListAdapter(taskList)
+    private var taskAdapter = TaskListAdapter(taskList, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,5 +43,27 @@ class TaskListActivity : AppCompatActivity() {
             taskList.addAll(tasks)
             taskAdapter.notifyDataSetChanged()
         })
+    }
+
+    override fun onLongClick(task: TaskDetail) {
+        val layoutInflater = LayoutInflater.from(this)
+        val view = layoutInflater.inflate(R.layout.alt_daig_delete, null)
+
+        val alertDialogue = AlertDialog.Builder(this)
+            .setView(view)
+            .create()
+
+        alertDialogue.show()
+
+        view.alt_dig_yes_btn.setOnClickListener {
+            viewModel.deleteTask(task)
+            alertDialogue.cancel()
+        }
+
+        view.alt_dig_no_btn.setOnClickListener {
+            alertDialogue.cancel()
+        }
+
+
     }
 }

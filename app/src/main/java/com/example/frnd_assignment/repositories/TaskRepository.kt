@@ -1,9 +1,8 @@
 package com.example.frnd_assignment.repositories
 
 import androidx.lifecycle.LiveData
-import com.example.frnd_assignment.models.requests.StoreTaskRequest
-import com.example.frnd_assignment.models.responses.StatusResponse
-import com.example.frnd_assignment.models.responses.TaskDetail
+import com.example.frnd_assignment.models.StoreTaskRequest
+import com.example.frnd_assignment.models.TaskDetail
 import com.example.frnd_assignment.remote.ApiService
 import com.example.frnd_assignment.roomDB.TaskDao
 import com.example.frnd_assignment.utils.Constants.userId
@@ -20,31 +19,40 @@ class TaskRepository @Inject constructor(
 ) {
     fun getTasksFromServer() {
         CoroutineScope(IO).launch {
-            val userID = hashMapOf<String,Int>()
+            val userID = hashMapOf<String, Int>()
             userID["user_id"] = userId
             val response = apiService.getTasksFromServer(userID).tasks
-
+            dao.deleteAll()
             for (i in response.indices) {
                 val taskObj = response[i]
                 val task = taskObj.taskDetail
                 task.id = taskObj.taskId
                 insertTaskToDB(task)
             }
-
         }
+    }
+    fun getNoOfTasks(date: String):LiveData<Int>{
+       return dao.getNoOfTasks(date)
     }
 
     fun storeTask(taskObj: TaskDetail) {
         CoroutineScope(IO).launch {
-            dao.insertTask(taskObj)
             val reqObj = StoreTaskRequest(taskObj, userId)
-            apiService.storeTaskOnServer(reqObj)
+            val response = apiService.storeTaskOnServer(reqObj)
+            if (response.status == "Success")
+                getTasksFromServer()
         }
 
     }
 
-    suspend fun deleteTaskFromServer(deleteReq: HashMap<String, Int>): StatusResponse {
-        return apiService.deleteTaskFromServer(deleteReq)
+    fun deleteTask(taskObj: TaskDetail) {
+        CoroutineScope(IO).launch {
+            dao.deleteTask(taskObj)
+            val delReq = hashMapOf<String, Int>()
+            delReq["user_id"] = userId
+            delReq["task_id"] = taskObj.id!!.toInt()
+            apiService.deleteTaskFromServer(delReq)
+        }
     }
 
     fun getTasksFromDB(): LiveData<List<TaskDetail>> {
@@ -52,7 +60,6 @@ class TaskRepository @Inject constructor(
     }
 
     private fun insertTaskToDB(taskObj: TaskDetail) {
-        dao.deleteAll()
         dao.insertTask(taskObj)
     }
 

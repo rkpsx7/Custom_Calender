@@ -6,7 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
-import com.example.frnd_assignment.models.responses.TaskDetail
+import com.example.frnd_assignment.models.TaskDetail
 
 @Dao
 interface TaskDao {
@@ -22,4 +22,7 @@ interface TaskDao {
 
     @Query("delete from tasks")
     fun deleteAll()
+
+    @Query("select COUNT(*) from tasks where date =:date")
+    fun getNoOfTasks(date: String):LiveData<Int>
 }

@@ -1,4 +1,4 @@
-package com.example.frnd_assignment.models.responses
+package com.example.frnd_assignment.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

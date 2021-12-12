@@ -2,9 +2,7 @@ package com.example.frnd_assignment.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.frnd_assignment.models.requests.StoreTaskRequest
-import com.example.frnd_assignment.models.responses.StatusResponse
-import com.example.frnd_assignment.models.responses.TaskDetail
+import com.example.frnd_assignment.models.TaskDetail
 import com.example.frnd_assignment.repositories.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -16,17 +14,21 @@ class TaskViewModel @Inject constructor(private val repo: TaskRepository) : View
         return repo.getTasksFromServer()
     }
 
+    fun getNoOfTasks(date: String): LiveData<Int> {
+        return repo.getNoOfTasks(date)
+    }
+
     fun getTasksFromDB(): LiveData<List<TaskDetail>> {
         return repo.getTasksFromDB()
     }
 
-    fun storeTask(taskObj: TaskDetail) {
+    fun storeTaskOnServer(taskObj: TaskDetail) {
         repo.storeTask(taskObj)
     }
 
 
-    suspend fun deleteTaskFromServer(deleteReq: HashMap<String, Int>): StatusResponse {
-        return repo.deleteTaskFromServer(deleteReq)
+    fun deleteTask(taskObj: TaskDetail) {
+        repo.deleteTask(taskObj)
     }
 
 }

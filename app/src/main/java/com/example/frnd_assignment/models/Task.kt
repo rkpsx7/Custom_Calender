@@ -1,5 +1,4 @@
-package com.example.frnd_assignment.models.responses
-import androidx.room.Entity
+package com.example.frnd_assignment.models
 import com.google.gson.annotations.SerializedName
 
 data class Task(

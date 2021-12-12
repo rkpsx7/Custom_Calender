@@ -1,6 +1,5 @@
-package com.example.frnd_assignment.models.requests
+package com.example.frnd_assignment.models
 
-import com.example.frnd_assignment.models.responses.TaskDetail
 import com.google.gson.annotations.SerializedName
 
 data class StoreTaskRequest(

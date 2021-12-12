@@ -1,4 +1,4 @@
-package com.example.frnd_assignment.views
+package com.example.frnd_assignment.calendar
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ import java.time.LocalDate
 
 class CalendarAdapter(
     private val daysOfMonth: ArrayList<String>,
-    private val onCalendarCellListener: OnCalendarCellListener,
+    private val onCalendarCellClickListener: OnCalendarCellClickListener,
     private val selectedDate: LocalDate
 ) :
     RecyclerView.Adapter<CalendarViewHolder>() {
@@ -25,7 +25,7 @@ class CalendarAdapter(
         val day = daysOfMonth[position]
         holder.setDate(day, selectedDate)
         holder.calendarCellClick.setOnClickListener {
-            onCalendarCellListener.onCellClick(
+            onCalendarCellClickListener.onCellClick(
                 position,
                 day,
                 selectedDate.month.value.toString(),

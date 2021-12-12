@@ -1,4 +1,4 @@
-package com.example.frnd_assignment.models.responses
+package com.example.frnd_assignment.models
 
 import com.google.gson.annotations.SerializedName
 

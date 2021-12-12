@@ -12,12 +12,15 @@
         <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/drawable/ic_prev_arrow.xml" value="0.2703125" />
         <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/drawable/ic_right_arrow.xml" value="0.2703125" />
         <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/drawable/ic_right_arrow_next.xml" value="0.2703125" />
+        <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/drawable/ic_tip.xml" value="0.19814814814814816" />
         <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/drawable/selected_cell_bg.xml" value="0.1" />
         <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/layout/activity_add_new_task.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/layout/activity_task_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/layout/activity_task_list2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/layout/alt_daig_delete.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/layout/calender_cell.xml" value="0.536" />
+        <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/layout/month_year_chooser.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/RX-S7/AndroidStudioProjects/FRND_Assignment/app/src/main/res/layout/task_item_layout.xml" value="0.25416666666666665" />
       </map>
     </option>
