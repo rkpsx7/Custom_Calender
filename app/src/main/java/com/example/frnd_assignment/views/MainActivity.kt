@@ -139,6 +139,10 @@ class MainActivity : AppCompatActivity(), OnCalendarCellClickListener,
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        getTotalTasks()
+    }
 
     override fun onCellClick(position: Int, day: String, month: String, year: String) {
         if (day.isNotEmpty()) {
