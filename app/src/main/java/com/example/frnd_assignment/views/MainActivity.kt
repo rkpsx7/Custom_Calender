@@ -71,7 +71,8 @@ class MainActivity : AppCompatActivity(), OnCalendarCellClickListener,
         val calendarAdapter = CalendarAdapter(daysInMonth, this, selectedDate)
         calenderRecyclerView.layoutManager = GridLayoutManager(this, 7)
         calenderRecyclerView.adapter = calendarAdapter
-
+        dateForAddActivity = "${selectedDate.dayOfMonth}-${selectedDate.month.value}-${selectedDate.year}"
+        tv_selected_date_show.text = "Selected Date: $dateForAddActivity"
     }
 
     private fun daysInMonth(date: LocalDate): ArrayList<String> {

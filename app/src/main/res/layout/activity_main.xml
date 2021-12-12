@@ -175,6 +175,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:padding="7dp"
+            android:textStyle="bold|italic"
             android:textAlignment="textStart"
             android:textColor="@color/black"
             android:textSize="18sp" />
@@ -185,6 +186,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_selected_date_show"
             android:padding="7dp"
+            android:textStyle="bold|italic"
             android:textAlignment="textStart"
             android:textColor="@color/black"
             android:textSize="18sp" />
